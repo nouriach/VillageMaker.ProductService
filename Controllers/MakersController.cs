@@ -1,4 +1,8 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using VillageMaker.ProductService.Data.Interfaces;
+using VillageMaker.ProductService.Domain.DTOs;
+using VillageMaker.ProductService.Domain.Models;
 
 namespace VillageMaker.ProductService.Controllers;
 
@@ -6,9 +10,23 @@ namespace VillageMaker.ProductService.Controllers;
 [ApiController]
 public class MakersController : ControllerBase
 {
-    public MakersController()
+    private readonly IProductRepo _repo;
+    private readonly IMapper _mapper;
+
+    public MakersController(IProductRepo repo, IMapper mapper)
     {
+        _repo = repo;
+        _mapper = mapper;
+    }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<MakerReadDto>> GetMakers()
+    {
+        Console.WriteLine("---> Getting Makers from ProductService");
         
+        var makerItems = _repo.GetAllMakers();
+
+        return Ok(_mapper.Map<IEnumerable<MakerReadDto>>(makerItems));
     }
 
     [HttpPost]
