@@ -10,6 +10,7 @@ public interface IProductRepo
     IEnumerable<Maker> GetAllMakers();
     void CreateMaker(Maker maker);
     bool MakerExists(int makerId);
+    bool ExternalMakerExists(int externalMakerId);
     
     // Product Commands
     IEnumerable<Product> GetProductsForMaker(int makerId);

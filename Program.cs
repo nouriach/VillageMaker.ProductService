@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using VillageMaker.ProductService.Data;
 using VillageMaker.ProductService.Data.Interfaces;
 using VillageMaker.ProductService.Data.Repositories;
+using VillageMaker.ProductService.EventProcessing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
+builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
 
 var app = builder.Build();
 
