@@ -2,7 +2,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VillageMaker.ProductService.Data.Interfaces;
 using VillageMaker.ProductService.Domain.DTOs;
-using VillageMaker.ProductService.Domain.Models;
 
 namespace VillageMaker.ProductService.Controllers;
 

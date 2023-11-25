@@ -13,5 +13,9 @@ public class ProductsProfile : Profile
         CreateMap<Maker, MakerReadDto>();
         CreateMap<ProductCreateDto, Product>();
         CreateMap<Product, ProductReadDto>();
+        CreateMap<MakerPublishedDto, Maker>()
+            .ForMember(
+                dest => dest.ExternalId,
+                opt => opt.MapFrom(src => src.Id));
     }
 }

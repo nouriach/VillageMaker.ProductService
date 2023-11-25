@@ -34,6 +34,11 @@ public class ProductRepo : IProductRepo
         return _context.Makers.Any(x => x.Id == makerId);
     }
 
+    public bool ExternalMakerExists(int externalMakerId)
+    {
+        return _context.Makers.Any(x => x.ExternalId == externalMakerId);
+    }
+
     public IEnumerable<Product> GetProductsForMaker(int makerId)
     {
         return _context.Products
