@@ -24,7 +24,7 @@ public class EventProcessor : IEventProcessor
         switch (eventType)
         {
             case EventType.MakerPublished:
-                //
+                AddMaker(message);
                 break;
             default:
                 break;
@@ -61,7 +61,8 @@ public class EventProcessor : IEventProcessor
                 if (!repo.ExternalMakerExists(maker.ExternalId))
                 {
                     repo.CreateMaker(maker);
-                    repo.SaveChanges();           
+                    repo.SaveChanges();
+                    Console.WriteLine("---> Maker added");
                 }
                 else
                 {
